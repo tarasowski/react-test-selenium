@@ -1,11 +1,12 @@
-const { By, Builder, Key, until } = require("selenium-webdriver");
+const { Builder, By, Key, until } = require("selenium-webdriver");
 const assert = require("assert");
+const chrome = require("selenium-webdriver/chrome");
 
 let options = new chrome.Options();
 options.addArguments(
-    'headless', // runs the browser in headless mode
-    'no-sandbox', // Bypass OS security model, MUST BE LAST OPTION
-    'disable-dev-shm-usage' // overcome limited resource problems
+    '--headless', // corrected the headless argument
+    '--no-sandbox',
+    '--disable-dev-shm-usage'
 );
 
 describe("add note", function() {
@@ -18,8 +19,7 @@ describe("add note", function() {
             // Warte, bis die Note angezeigt wird
             await driver.wait(until.elementLocated(By.xpath("//*[@id='root']/div/div")), 5000);
 
-            let note = await driver.findElement(By.xpath("//*[@id='root']/div/div"))
-                                   .getText();
+            let note = await driver.findElement(By.xpath("//*[@id='root']/div/div")).getText();
             console.log({ note });
             assert.equal(note, 'Hello Selenium\nX');
             console.log("TEST PASSED!");
