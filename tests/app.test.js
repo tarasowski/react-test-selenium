@@ -2,9 +2,7 @@ const { By, Builder, Key, until } = require("selenium-webdriver");
 const assert = require("assert");
 
 describe("add note", function() {
-    it("should add a note and display on the page", async function() {
-        // Testlogik hier
-        // hier kommt Selenium
+    it("should add a note and display on the page", async function(done) { // 'done' als Parameter hinzugefügt
         let driver = await new Builder().forBrowser('chrome').build();
         try {
             await driver.get('http://localhost:3000');
@@ -18,8 +16,10 @@ describe("add note", function() {
             console.log({ note });
             assert.equal(note, 'Hello Selenium\nX');
             console.log("TEST PASSED!");
+            done(); // Aufruf von 'done', um den Test abzuschließen
         } catch (e) {
             console.error(e);
+            done(e); // Bei einem Fehler 'done' aufrufen und den Fehler übergeben
         } finally {
             await driver.quit();
         }
