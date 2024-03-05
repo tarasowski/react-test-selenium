@@ -10,7 +10,9 @@ options.addArguments(
 );
 +
 describe("add note", function() {
-    it("should add a note and display on the page", async function() {
+  jest.setTimeout(30000); // Setzt das Timeout auf 30 Sekunden
+
+  it("should add a note and display on the page", async function() {
         // Testlogik hier
         // hier kommt Silneium
         let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
