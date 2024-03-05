@@ -31,7 +31,7 @@ jobs:
       - name: Setup ChromeDriver
         uses: nanasess/setup-chromedriver@v2
         with:
-          chromedriver-version: "latest"
+          chromedriver-version: "122.0.6261.69"
 
       - name: Start Web Server
         run: |
