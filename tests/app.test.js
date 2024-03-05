@@ -13,7 +13,7 @@ describe("add note", function() {
     it("should add a note and display on the page", async function() {
         // Testlogik hier
         // hier kommt Silneium
-        let driver = await new Builder().forBrowser('chrome').build();
+        let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
         try {
             await driver.get('http://localhost:3000');
             await driver.findElement(By.xpath('//input')).sendKeys('Hello Selenium', Key.RETURN);
