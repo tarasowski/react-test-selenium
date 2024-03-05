@@ -23,7 +23,7 @@ jobs:
           npm install --save-dev @babel/plugin-proposal-private-property-in-object
           npm i react-draggable
           npm i randomcolor
-          
+
       - name: Build React App
         run: npm run build
 
@@ -31,7 +31,7 @@ jobs:
         run: npm start &
 
       - name: Wait for Server to Start
-        run: sleep 10
+        run: sleep 3
 
       - name: Run Selenium Tests
         run: npm test
