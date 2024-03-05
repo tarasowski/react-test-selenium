@@ -1,6 +1,14 @@
-const { By, Builder, Key } = require("selenium-webdriver")
-const assert = require("assert")
+const { Builder, By, Key, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
+const assert = require('assert');
 
+let options = new chrome.Options();
+options.addArguments(
+    'headless', 
+    'no-sandbox', 
+    'disable-dev-shm-usage' 
+);
++
 describe("add note", function() {
     it("should add a note and display on the page", async function() {
         // Testlogik hier
